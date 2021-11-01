@@ -108,3 +108,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
     );
   }
 }
+
+class PrivacyBottomBar extends StatelessWidget {
+  const PrivacyBottomBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      color: kPantonePrimaryDark,
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              '© 2021 Copyright De Sossi Franchellucci. Tutti i diritti riservati | P.IVA 10822281001 ',
+              style: TextStyle(color: kPantoneWhite),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

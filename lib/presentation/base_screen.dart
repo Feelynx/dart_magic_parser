@@ -3,6 +3,7 @@ import 'package:desox_fran_website/components/custom_text_button_appbar.dart';
 import 'package:desox_fran_website/presentation/screens/homepage_screen.dart';
 import 'package:desox_fran_website/presentation/screens/who_we_are_screen.dart';
 import 'package:desox_fran_website/util/costants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -22,7 +23,7 @@ class _ScreenBaseState extends State<ScreenBase> {
     return SafeArea(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 1000) {
+          if (constraints.maxWidth > 1100) {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: kPantoneWhite,
@@ -63,13 +64,10 @@ class _ScreenBaseState extends State<ScreenBase> {
                 ),
                 toolbarHeight: 130,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(30),
+                  side: BorderSide(
+                    width: 0.1,
+                    color: kPantoneSecondary,
                   ),
-                  /*side: BorderSide(
-                            width: 0.5,
-                            color: kPantoneSecondary,
-                          ),*/
                 ),
                 actions: [
                   CustomAppBarTextButton(
@@ -132,7 +130,7 @@ class _ScreenBaseState extends State<ScreenBase> {
               body: Column(
                 children: [
                   Expanded(child: widget.largeSizeLayoutBody),
-                  Container(
+                  /*Container(
                     width: MediaQuery.of(context).size.width,
                     color: kPantonePrimaryDark,
                     child: Padding(
@@ -148,7 +146,7 @@ class _ScreenBaseState extends State<ScreenBase> {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                 ],
               ),
               floatingActionButton: FloatingActionButton(
@@ -170,6 +168,8 @@ class _ScreenBaseState extends State<ScreenBase> {
               appBar: AppBar(
                 backgroundColor: kPantoneWhite,
                 elevation: 0,
+                titleSpacing: 0,
+                automaticallyImplyLeading: false,
                 title: GestureDetector(
                   onTap: () {
                     setState(() {
@@ -181,9 +181,20 @@ class _ScreenBaseState extends State<ScreenBase> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Builder(
+                          builder: (context) => IconButton(
+                            icon: Icon(
+                              Icons.menu,
+                              color: kPantonePrimary,
+                            ),
+                            onPressed: () {
+                              Scaffold.of(context).openDrawer();
+                            },
+                          ),
+                        ),
                         Image.asset(
                           'images/DeSossiFranchellucciLogo500NoText.png',
-                          height: 100,
+                          height: 80,
                           fit: BoxFit.cover,
                         ),
                         VerticalDivider(
@@ -195,34 +206,22 @@ class _ScreenBaseState extends State<ScreenBase> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          'Associazione Professionale\nDe Sossi Franchellucci',
-                          style: TextStyle(color: kPantoneSecondary, fontSize: 16),
+                        Expanded(
+                          child: Text(
+                            'Associazione Professionale\nDe Sossi Franchellucci',
+                            style: TextStyle(color: kPantoneSecondary, fontSize: 16),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                toolbarHeight: 130,
-                leading: Builder(
-                  builder: (context) => IconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      color: kPantonePrimary,
-                    ),
-                    onPressed: () {
-                      Scaffold.of(context).openDrawer();
-                    },
-                  ),
-                ),
+                toolbarHeight: 90,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(30),
+                  side: BorderSide(
+                    width: 0.1,
+                    color: kPantoneSecondary,
                   ),
-                  /*side: BorderSide(
-                            width: 0.5,
-                            color: kPantoneSecondary,
-                          ),*/
                 ),
               ),
               drawer: Drawer(
@@ -230,8 +229,13 @@ class _ScreenBaseState extends State<ScreenBase> {
                   padding: EdgeInsets.zero,
                   children: [
                     DrawerHeader(
-                      child: Center(
-                        child: Image.asset('images/DeSossiFranchellucciLogo500NoText.png'),
+                      child: GestureDetector(
+                        onTap: () {
+                          Routemaster.of(context).push(HomePageScreen.id);
+                        },
+                        child: Center(
+                          child: Image.asset('images/DeSossiFranchellucciLogo500NoText.png'),
+                        ),
                       ),
                     ),
                     ListTile(
@@ -241,7 +245,9 @@ class _ScreenBaseState extends State<ScreenBase> {
                         color: kPantonePrimary,
                       ),
                       hoverColor: kPantonePrimary.withOpacity(0.3),
-                      onTap: () {},
+                      onTap: () {
+                        Routemaster.of(context).push(HomePageScreen.id);
+                      },
                     ),
                     ListTile(
                       title: const Text('Chi siamo'),
@@ -250,7 +256,10 @@ class _ScreenBaseState extends State<ScreenBase> {
                         color: kPantonePrimary,
                       ),
                       hoverColor: kPantonePrimary.withOpacity(0.3),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        Routemaster.of(context).push(WhoWeAreScreen.id);
+                      },
                     ),
                     ListTile(
                       title: const Text('Servizi'),
@@ -320,7 +329,7 @@ class _ScreenBaseState extends State<ScreenBase> {
               body: Column(
                 children: [
                   Expanded(child: widget.smallSizeLayoutBody),
-                  Container(
+                  /*Container(
                     width: MediaQuery.of(context).size.width,
                     color: kPantonePrimaryDark,
                     child: Padding(
@@ -336,7 +345,7 @@ class _ScreenBaseState extends State<ScreenBase> {
                         ],
                       ),
                     ),
-                  ),
+                  ),*/
                 ],
               ),
               floatingActionButton: FloatingActionButton(

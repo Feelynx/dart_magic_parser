@@ -1,5 +1,6 @@
 import 'package:desox_fran_website/components/widget.dart';
 import 'package:desox_fran_website/util/costants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum UserType { user, admin }
@@ -113,7 +114,7 @@ class _SupportCustomAlertDialogState extends State<SupportCustomAlertDialog> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: kPantonePrimaryDark,
                   borderRadius: BorderRadius.only(
@@ -155,23 +156,27 @@ class _LoginCustomDialogState extends State<LoginCustomDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(32.0))),
-      contentPadding: EdgeInsets.only(top: 10.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(32.0),
+        ),
+      ),
+      contentPadding: EdgeInsets.all(15.0),
       title: Text(
-        'Login',
+        'Accedi per continuare',
         textAlign: TextAlign.center,
       ),
       titleTextStyle: TextStyle(
         fontSize: 20,
+        color: kPantonePrimaryDark,
       ),
       content: StatefulBuilder(
         builder: (BuildContext context, StateSetter setState) {
-          return Container(
-            height: MediaQuery.of(context).size.height / 3,
-            width: MediaQuery.of(context).size.width / 4.5,
-            child: Scrollbar(
-              isAlwaysShown: false,
-              child: SingleChildScrollView(
+          return Scrollbar(
+            isAlwaysShown: false,
+            child: SingleChildScrollView(
+              child: Container(
+                width: MediaQuery.of(context).size.width / 2,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -189,7 +194,7 @@ class _LoginCustomDialogState extends State<LoginCustomDialog> {
                       isPasswordField: true,
                       hintText: '',
                     ),
-                    Row(
+                    /*Row(
                       children: <Widget>[
                         Expanded(
                           child: ListTile(
@@ -220,14 +225,42 @@ class _LoginCustomDialogState extends State<LoginCustomDialog> {
                           ),
                         ),
                       ],
+                    ),*/
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0),
+                      child: GestureDetector(
+                        child: Container(
+                          height: 40,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            color: kPantonePrimaryDark,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(30),
+                            ),
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: TextStyle(color: kPantoneWhite),
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Password dimenticata?'),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text('Registrati'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10.0),
+                      child: Column(
+                        children: [
+                          TextButton(
+                            onPressed: () {},
+                            child: Text('Password dimenticata?'),
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text('Registrati'),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

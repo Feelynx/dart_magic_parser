@@ -1,3 +1,4 @@
+import 'package:desox_fran_website/components/widget.dart';
 import 'package:desox_fran_website/util/costants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,27 +14,51 @@ class _WhoWeAreMobileState extends State<WhoWeAreMobile> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: EdgeInsets.all(10),
+      shrinkWrap: true,
+      /*padding: EdgeInsets.all(20),*/
       children: [
-        Container(
-          padding: EdgeInsets.all(8),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   Expanded(
-                    child: CircleAvatar(
-                      child: Icon(Icons.person),
-                      radius: 40,
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      kMarcoDeSossiProfileInfo,
-                      style: TextStyle(fontSize: 14),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage(
+                                  'images/personplaceholdercircle.png',
+                                ),
+                                radius: 110,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: Text(
+                                kMarcoDeSossiProfileInfo,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          kMarcoDeSossiDescription,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -41,23 +66,56 @@ class _WhoWeAreMobileState extends State<WhoWeAreMobile> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Divider(
+                  height: 2,
                   color: kPantonePrimary,
                 ),
               ),
-              Text(
-                kMarcoDeSossiDescription,
-                /*style: TextStyle(fontSize: 16),*/
-              ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [],
-              ),
-              Divider(
-                color: kPantonePrimary,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Expanded(
+                              child: CircleAvatar(
+                                backgroundImage: AssetImage(
+                                  'images/personplaceholder2circle.png',
+                                ),
+                                radius: 110,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Expanded(
+                              child: Text(
+                                kFabioFranchellucciProfileInfo,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          kFabioFranchellucciDescription,
+                          style: TextStyle(fontSize: 15),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
-        )
+        ),
+        PrivacyBottomBar(),
       ],
     );
   }

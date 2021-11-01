@@ -1,4 +1,6 @@
 import 'package:desox_fran_website/presentation/base_screen.dart';
+import 'package:desox_fran_website/presentation/pages/whoweare/whoweare_desktop.dart';
+import 'package:desox_fran_website/presentation/pages/whoweare/whoweare_mobile.dart';
 import 'package:flutter/material.dart';
 
 class WhoWeAreScreen extends StatefulWidget {
@@ -13,8 +15,8 @@ class _WhoWeAreScreenState extends State<WhoWeAreScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: ScreenBase(
-      largeSizeLayoutBody: Container(),
-      smallSizeLayoutBody: Container(),
+      largeSizeLayoutBody: WhoWeAreDesktop(),
+      smallSizeLayoutBody: WhoWeAreMobile(),
     ));
   }
 }

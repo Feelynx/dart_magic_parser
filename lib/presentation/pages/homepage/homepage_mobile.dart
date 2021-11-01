@@ -1,4 +1,6 @@
+import 'package:desox_fran_website/components/widget.dart';
 import 'package:desox_fran_website/util/costants.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomepageMobile extends StatelessWidget {
@@ -6,47 +8,48 @@ class HomepageMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'images/HomeBackgroundDark.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+    return ListView(
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
+      children: [
+        Stack(
+          alignment: Alignment.center,
+          children: [
+            Positioned(
+              child: Image.asset(
+                'images/HomeBackgroundDark.png',
+                fit: BoxFit.cover,
+                height: 400,
+                width: MediaQuery.of(context).size.width,
               ),
-              Positioned(
-                top: 60,
-                left: 60,
-                right: MediaQuery.of(context).size.width / 4,
+            ),
+            Positioned(
+              left: MediaQuery.of(context).size.width / 8,
+              right: MediaQuery.of(context).size.width / 8,
+              child: Align(
+                alignment: Alignment.center,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Da sempre al tuo fianco per aiutarti.",
-                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: kPantoneWhite),
+                      "Associazione Professionale De Sossi Franchellucci, da sempre al tuo fianco per aiutarti.",
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: kPantoneWhite),
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      descriptionHomePageMobile,
-                      style: TextStyle(fontSize: 16, color: kPantoneWhite),
-                    )
                   ],
                 ),
               ),
-            ],
+            ),
+          ],
+        ),
+        Container(
+          padding: EdgeInsets.all(40),
+          child: Text(
+            kDescriptionHomePage,
+            style: TextStyle(fontSize: 16, color: kPantonePrimary),
           ),
-        ],
-      ),
+        ),
+        PrivacyBottomBar(),
+      ],
     );
   }
 }
